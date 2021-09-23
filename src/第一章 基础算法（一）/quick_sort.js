@@ -22,7 +22,7 @@ rl.on('line', (line) => {
 })
 
 function quick_sort(q, l, r) {
-  if (l >= r) return
+  if (l >= r) return // 区间里个数是 1 或 0 则退出
   let x = q[l], i = l - 1, j = r + 1 // 因为每次都先移动一次指针，所以指针比边界多1个偏移量
   while (i < j) {
     do i++; while (q[i] < x);
