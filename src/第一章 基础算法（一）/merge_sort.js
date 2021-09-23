@@ -44,5 +44,5 @@ function merge_sort(q, l, r) {
   while(i <= mid) temp[k ++] = q[i ++]
   while(j <= r) temp[k ++] = q[j ++]
   // 将 temp 复制给原数组 q
-  for(i = l, j = 0; i <= r; i++, j++) q[i] = temp[j] // 注意从l开始
+  for(i = l, j = 0; i <= r; i++, j++) q[i] = temp[j] // 注意从l开始，到r结束
 }
