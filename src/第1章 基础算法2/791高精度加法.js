@@ -5,7 +5,7 @@ const rl = readline.createInterface({
   output: process.stdout
 })
 let a = '', b = ''
-let A = new Array(), B = []
+let A = [], B = []
 let inputCount = 0
 rl.on('line', (line) => {
   inputCount++
