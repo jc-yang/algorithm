@@ -21,6 +21,7 @@ rl.on('line', (line) => {
   }
 })
 
+// C = A + B
 function highPrecisionAdd(A = [], B = []) {
   let C = [] // 结果
   let t = 0 // 进位
