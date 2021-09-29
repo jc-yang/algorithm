@@ -34,7 +34,7 @@ package chapter1.baseAlgorithm2;
  */
 
 import java.util.Scanner;
-
+// 可参考该同学的图解 https://www.acwing.com/solution/content/4684/
 public class Y796subMatrixSum {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
