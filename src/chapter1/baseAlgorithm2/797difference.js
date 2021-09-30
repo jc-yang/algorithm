@@ -37,6 +37,7 @@ const rl = readline.createInterface({
 let inputCount = 0
 let n, m
 let a = new Array(100010).fill(0), b = new Array(100010).fill(0)
+
 rl.on('line', line => {
   inputCount++
   if (inputCount === 1) {
