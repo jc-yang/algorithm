@@ -55,14 +55,14 @@ rl.on('line', line => {
   } else if (inputCount <= m + 2) {
     const [l, r, c] = line.split(' ').map(i => parseInt(i))
     doInsert(l, r, c) // 求差分
-
-    if (inputCount === m + 2) { // 输入完成，开始计算
-      for (let i = 1; i <= n; i++) b[i] += b[i - 1] // 构造出原来的数组
-      let res = ''
-      for (let i = 1; i <= n; i++) res += b[i] + ' '
-      console.log(res)
-    }
   }
+})
+
+rl.on('close', () => {  // 输入完成，开始计算
+  for (let i = 1; i <= n; i++) b[i] += b[i - 1] // 构造出原来的数组
+  let res = ''
+  for (let i = 1; i <= n; i++) res += b[i] + ' '
+  console.log(res)
 })
 
 function doInsert(l, r, c) {
@@ -70,6 +70,7 @@ function doInsert(l, r, c) {
   b[r + 1] -= c
 }
 
+/*******************    leetcode  ******************** */
 // leetcode 370
 function fct(length, updates) {
   let arr = new Array(length).fill(0)
