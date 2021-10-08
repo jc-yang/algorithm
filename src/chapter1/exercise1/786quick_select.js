@@ -53,9 +53,9 @@ function quick_select(l, r, k) {
   }
   let sl = j - l + 1 // 左边区间范围是[l,j]，所以区间内元素个数为 j-l+1
   if(k <= sl) {
-    return quick_select(l, j, k)
+    return quick_select(l, j, k) // k<=sl，说明所求的数肯定在左边区间
   } else {
-    return quick_select(j + 1, r, k - sl)
+    return quick_select(j + 1, r, k - sl) // 左边区间有sl个数，所以整个区间的第k小的数，在右边区间就是第 k-sl小的数
   }
 }
 
