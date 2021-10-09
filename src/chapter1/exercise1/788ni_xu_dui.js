@@ -1,4 +1,5 @@
 /**
+ * acwing788, leetcode https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/comments/
  * 788. 逆序对的数量
 
 给定一个长度为 n 的整数数列，请你计算数列中的逆序对的数量。
