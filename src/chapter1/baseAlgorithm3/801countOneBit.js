@@ -39,6 +39,7 @@ rl.on('close', () => {
     let res = 0
     while(x) {
       x -= lowbit(x) // 每次减去x的最后一位1，减到0为止
+      // x &= x - 1 // 或直接把最低位1变为0
       res ++
     }
     output += res + ' '
