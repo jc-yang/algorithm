@@ -1,8 +1,8 @@
 package chapter1.baseAlgorithm3;
 
-import javafx.util.Pair;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * acwing802
@@ -48,12 +48,16 @@ public class Y802IntervalSum {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         int m = in.nextInt();
+        System.out.println();
+        System.out.println("n=" + n + ", m=" + m);
         for (int i = 0; i < n; i++) {
             int x = in.nextInt();
             int c = in.nextInt();
             add.add(new Pair<>(x, c));
             alls.add(x); // 存下标
         }
+//        System.out.println("add: " + add.toString());
+//        System.out.println("alls: " + alls.toString());
         for (int i = 0; i < m; i++) {
             int l = in.nextInt();
             int r = in.nextInt();
@@ -62,14 +66,16 @@ public class Y802IntervalSum {
             alls.add(l);
             alls.add(r);
         }
+        System.out.println("add: " + add.toString());
+        System.out.println("alls: " + alls.toString());
         // 排序并去重
         Collections.sort(alls);
         alls = alls.stream().distinct().collect(Collectors.toList());
 
         // 处理插入
         for (Pair<Integer, Integer> item : add) {
-            int x = find(item.getKey());
-            a[x] += item.getValue(); // 在离散化之后的坐标的位置上加上要加的数
+            int x = find(item.getLeft());
+            a[x] += item.getRight(); // 在离散化之后的坐标的位置上加上要加的数
         }
 
         // 预处理前缀和
@@ -79,8 +85,8 @@ public class Y802IntervalSum {
 
         // 处理询问
         for (Pair<Integer, Integer> item : query) {
-            int l = find(item.getKey()); // 左边离散化后的结果
-            int r = find(item.getValue()); // 右边离散化后的结果
+            int l = find(item.getLeft()); // 左边离散化后的结果
+            int r = find(item.getRight()); // 右边离散化后的结果
             System.out.println(s[r] - s[l - 1]);
         }
     }
@@ -97,6 +103,32 @@ public class Y802IntervalSum {
             }
         }
         return r + 1; // 映射到从1开始的自然数
+    }
+}
+
+class Pair<L, R> {
+    L left;
+    R right;
+
+    public Pair(L left, R right) {
+        this.left = left;
+        this.right = right;
+    }
+
+    public L getLeft(){
+        return this.left;
+    };
+
+    public R getRight() {
+        return this.right;
+    }
+
+    @Override
+    public String toString() {
+        return "Pair{" +
+                "left=" + left +
+                ", right=" + right +
+                '}';
     }
 }
 /*
