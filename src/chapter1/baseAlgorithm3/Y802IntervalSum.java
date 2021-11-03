@@ -38,7 +38,7 @@ import java.util.stream.Collectors;
  */
 // 数据范围比较小的话可以使用前缀和，但此题数据范围比较大，且比较稀疏（个数少）
 public class Y802IntervalSum {
-    static final int N = 300010;
+    static final int N = 300010; // 为什么300000：插入操作n是100000，查询操作m是100000。插入操作只有一个坐标，查询操作有两个坐标，所以离散化后的值最多有n+2m个
     static int[] a = new int[N];
     static int[] s = new int[N];
     static List<Integer> alls = new ArrayList<>(); // 待离散化的数组
@@ -48,16 +48,12 @@ public class Y802IntervalSum {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         int m = in.nextInt();
-        System.out.println();
-        System.out.println("n=" + n + ", m=" + m);
         for (int i = 0; i < n; i++) {
             int x = in.nextInt();
             int c = in.nextInt();
             add.add(new Pair<>(x, c));
             alls.add(x); // 存下标
         }
-//        System.out.println("add: " + add.toString());
-//        System.out.println("alls: " + alls.toString());
         for (int i = 0; i < m; i++) {
             int l = in.nextInt();
             int r = in.nextInt();
@@ -66,23 +62,18 @@ public class Y802IntervalSum {
             alls.add(l);
             alls.add(r);
         }
-        System.out.println("add: " + add.toString());
-        System.out.println("alls: " + alls.toString());
         // 排序并去重
         Collections.sort(alls);
         alls = alls.stream().distinct().collect(Collectors.toList());
-
         // 处理插入
         for (Pair<Integer, Integer> item : add) {
             int x = find(item.getLeft());
             a[x] += item.getRight(); // 在离散化之后的坐标的位置上加上要加的数
         }
-
         // 预处理前缀和
-        for (int i = 1; i < alls.size(); i++) {
+        for (int i = 1; i <= alls.size(); i++) { // <=，因为映射到的是从1到alls.size()的数组
             s[i] = s[i - 1] + a[i];
         }
-
         // 处理询问
         for (Pair<Integer, Integer> item : query) {
             int l = find(item.getLeft()); // 左边离散化后的结果
@@ -97,7 +88,7 @@ public class Y802IntervalSum {
         while (l < r) {
             int mid = l + r >> 1;
             if (alls.get(mid) >= x) {
-                r = x;
+                r = mid;
             } else {
                 l = mid + 1;
             }
