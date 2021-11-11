@@ -45,7 +45,6 @@ const N = 100010
 // ne[i] 表示节点 i 的下一个节点的下标
 // idx 存储当前已经用到了哪个点（下标）
 let head, e = new Array(N).fill(0), ne = new Array(N).fill(0), idx
-
 // 初始化
 function init(params) {
   head = -1
