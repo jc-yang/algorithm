@@ -90,11 +90,12 @@ rl.on('line', line => {
       add_to_head(x)
     } else if (op === 'D') {
       const k = parseInt(lll[1])
-      remove(k)
+      if (!k) head = ne[head]
+      else remove(k - 1) // 0号点是第一个插入的点，1是第二个插入的点，所以输入需要是k-1
     } else {
       const k = parseInt(lll[1])
       const x = parseInt(lll[2])
-      add(k, x)
+      add(k - 1, x)
     }
   }
 })
