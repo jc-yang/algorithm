@@ -2,7 +2,7 @@ package chapter2.dataStructure1;
 
 import java.util.Scanner;
 
-public class Y826singleLinkedList {
+public class Y826singlyLinkedList {
     public static final int N = 100010;
     // head 表示头结点的下标
     // e[i] 表示节点 i 的值
