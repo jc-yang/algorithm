@@ -59,3 +59,8 @@ function pop() {
 function isEmpty() {
     return tt <= 0
 }
+
+// 取出栈顶元素
+function top() {
+    return stack[tt]
+}
