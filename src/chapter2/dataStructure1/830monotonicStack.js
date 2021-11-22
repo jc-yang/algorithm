@@ -32,6 +32,7 @@ rl.on('line', line => {
     if(inputCount === 1) n = parseInt(line)
     else q = line.split(' ').map(i => parseInt(i))
 })
+
 rl.on('close', () => {
     let res = '-1 '
     for(let i = 1; i < q.length; i++) {
