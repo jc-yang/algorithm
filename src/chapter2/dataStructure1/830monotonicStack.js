@@ -30,18 +30,21 @@ let n, q
 rl.on('line', line => {
     inputCount++
     if(inputCount === 1) n = parseInt(line)
-    else q = line.split(' ').map(i => parseInt(i))
+    else q = line.trim().split(' ').map(i => parseInt(i))
 })
-
+const N = 100010
+let stack = new Array(N).fill(0), tt = 0
 rl.on('close', () => {
-    let res = '-1 '
-    for(let i = 1; i < q.length; i++) {
-        for(let j = i - 1; j >= 0; j++) {
-            if(q[j] < q[i] ) {
-                res += q[j]
-                console.log(res)
-            }
+    let res = ''
+    q.forEach(x => {
+        // 计算题目内容
+        while (tt && stack[tt] >= x) { // 栈顶元素就永远不会被用到
+            tt-- // 所以指针指向下一个
         }
-    }
-    console.log(q)
+        if (tt) res += stack[tt] + ' ' // 单调栈减完之后如果tt不为0(栈不为空)，则栈顶元素就是离x左边最近最小的数
+        else res += '-1 ' // 否则栈为空，没有要求的数
+
+        stack[++tt] = x // 最后记得要把x插到栈里面去
+    })
+    console.log(res)
 })
