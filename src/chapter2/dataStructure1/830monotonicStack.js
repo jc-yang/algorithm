@@ -38,7 +38,7 @@ rl.on('close', () => {
     let res = ''
     q.forEach(x => {
         // 计算题目内容
-        while (tt && stack[tt] >= x) { // 栈顶元素就永远不会被用到
+        while (tt && stack[tt] >= x) { // 如果比 x 大的话，栈顶元素就永远不会被用到
             tt-- // 所以指针指向下一个
         }
         if (tt) res += stack[tt] + ' ' // 单调栈减完之后如果tt不为0(栈不为空)，则栈顶元素就是离x左边最近最小的数
