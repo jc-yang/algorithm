@@ -63,3 +63,4 @@ function isEmpty() {
 function peek() {
     return queue[hh]
 }
+
