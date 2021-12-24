@@ -48,3 +48,21 @@ rl.on('close', () => {
     })
     console.log(res)
 })
+/************或者使用传统栈的方法************** */
+let stk = []
+rl.on('close', () => {
+    let res = ''
+    q.forEach(x => {
+        while(stk.length > 0 && stk[stk.length - 1] >= x) {
+            stk.pop() // 构建单调栈
+        }
+        // 构建完之后判断是否为空
+        if(stk.length > 0) {
+            res += stk[stk.length - 1] + ' '
+        } else {
+            res += '-1 '
+        }
+        stk.push(x)
+    })
+    console.log(res)
+})
