@@ -55,7 +55,10 @@ rl.on('line', line => {
     w.push(ww)
   }
 })
-
+/**
+ * 状态转移方程 f[i][j] = f[i-1][j-v[i]] + w[i]
+ * f[i][j] = max{ f[i-1][j], f[i-1][j-v[i]] + w[i] }
+ */
 rl.on('close', () => {
   for(let i = 1; i <= n; i++) {
     for(let j = 0; j <= m; j++) {
